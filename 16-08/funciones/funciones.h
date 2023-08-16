@@ -6,6 +6,7 @@ typedef struct RegNotas{
 
 
 double promedio(int * notas, int n );
+double promedio(int n1 , int n2 , int n3);
 
 
 #endif // !FUNCIONEs
