@@ -33,34 +33,41 @@ int main(int argc, char** argv) {
 	exit(1);
     }
 
-    StMedico medico;
-    StPaciente paciente;
-    StCita cita;
+  //Realizando pruebas locas: 
+  StCita arrCitas[500];
+  StMedico arrMedicos[500];
+  StPaciente arrPacientes[500];
 
-    StMedico arrMedicos[100];
+  //Prueba de lecturas
+  //Lecuta medicos
+  int i = 0;
+  while(archMedicos >> arrMedicos[i]) i++;
+  arrMedicos[i].codigo = 0;
+  //Lectura pacientes
+  i = 0;
+  while(archPacientes >> arrPacientes[i]) i++;
+  //Lectura citas
+  i = 0;
+  while((archCitas >> arrCitas[i]) != -1) i++;
 
- 
-//    
-    int i = 0;
-    while(1){
-	archMedicos >> arrMedicos[i];	
-	if(archMedicos.eof()) break;
-	i++;
-    }
-   
-//    while(1){
-//	archPacientes >> paciente;
-//	if(archPacientes.eof()) break;
-//    }
+  //Busqueda
+  if(arrCitas[0] <= arrMedicos) cout << "Encontrada info cita" << endl;
+  else cout << "No encontrada info Cita" << endl;
 
-    while(1){
-	archCitas >> cita;
-	if(archCitas.eof()) break;
 
-	if(cita <= arrMedicos)
-	    cout << "bien" << endl;	
-    }
-      
+  cout << arrCitas[0].codigoDelMedico << endl;
+
+  //Agregacion
+  //  //Antes tenemos que inicializar todas las citas del paciente 
+  for (int i = 0 ; i < 20 ; i++)
+    arrPacientes[0].citas[i].codigoDelMedico = 0;
+  arrPacientes[0] += arrCitas[0];
+  cout << "Se agrego correctamente la cita al paciente" << endl;
+  cout << "Sus datos son: " << endl; 
+  cout << arrPacientes[0].citas[0].codigoDelMedico << endl; 
+  cout << arrPacientes[0].citas[0].fecha<< endl; 
+
+
     return 0;
 }
 

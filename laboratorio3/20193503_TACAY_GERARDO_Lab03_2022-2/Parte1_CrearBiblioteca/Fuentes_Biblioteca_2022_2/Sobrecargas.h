@@ -13,4 +13,6 @@ int operator>>(ifstream &arch, struct StCita&cita);
 
 
 bool operator <=(StCita cita, StMedico medico[]);
+void operator+=(StPaciente paciente, StCita cita);
+void operator++(StPaciente paciente);
 #endif /* SOBRECARGAS_H */

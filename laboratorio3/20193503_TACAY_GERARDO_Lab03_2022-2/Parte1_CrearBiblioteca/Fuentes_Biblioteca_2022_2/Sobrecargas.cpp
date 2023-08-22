@@ -2,6 +2,7 @@
 
 
 #include "Sobrecargas.h"
+#include "Estructuras-202202.h"
 #include <fstream>
 #include <iostream>
 #include <cstring>
@@ -24,7 +25,7 @@ bool operator>>(ifstream &arch, struct StMedico &medico){
     arch >> ws;
     arch.getline(nombres,100,' ');
     arch >> medico.tarifaPoxConsulta;
-   
+    
     int cont = 0;
     for (int i = strlen(nombres) ; nombres[i]!= '_' ; i--)
 	cont = i;
@@ -95,8 +96,7 @@ bool operator <=(StCita cita, StMedico medico[]){
 //    double tarifaPoxConsulta;
 //    char especialidad[50];
 //};
-
-    for(int i = 0 ; medico[i].codigo ; i++){
+  for(int i = 0 ; medico[i].codigo ; i++){
 	if(cita.codigoDelMedico == medico[i].codigo){
 	   cita.tarifaPorConsulta = medico[i].tarifaPoxConsulta; 
 	   strcpy(cita.especialidad,medico[i].especialidad);
@@ -104,4 +104,24 @@ bool operator <=(StCita cita, StMedico medico[]){
 	}
     } 
     return false;
+}
+
+void operator+=(StPaciente paciente, StCita cita){
+  //Hay que inicilizar el codigo de las citas en 0
+  int cont = 0;
+  for (int i = 0; paciente.citas[i].codigoDelMedico != 0 ; i++)
+    cont++;
+
+  cout << "El valor del contador es " << cont << endl;
+  paciente.citas[cont].codigoDelMedico = cita.codigoDelMedico;
+  paciente.citas[cont].fecha= cita.fecha;
+  strcpy(paciente.citas[cont].especialidad , cita.especialidad);
+  paciente.citas[cont].tarifaPorConsulta= cita.tarifaPorConsulta;
+}
+
+void operator++(StPaciente paciente){
+  paciente.totalGastado = 0;
+  for (int i = 0 ; paciente.citas[i].codigoDelMedico ; i++){
+    paciente.totalGastado += paciente.citas[i].tarifaPorConsulta;
+  }
 }
