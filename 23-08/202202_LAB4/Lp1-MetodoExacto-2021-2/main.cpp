@@ -10,6 +10,7 @@ int main(){
     
     CargaDeClientes(cli_DNI, cli_nombre, cli_Categoria);
     ReporteDeClientes(cli_DNI, cli_nombre, cli_Categoria);
+    CargaDePedidosYProductos(cli_DNI, pro_Codigo, pro_descripcion, pro_Descuento, pro_Precio, cli_CodigoProFechaPedido, cli_CantidadPedido);
     
   return 0;
 }

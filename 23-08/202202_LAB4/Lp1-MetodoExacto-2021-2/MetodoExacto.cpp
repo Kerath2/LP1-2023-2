@@ -86,3 +86,51 @@ void ReporteDeClientes(int *cli_DNI, char **cli_Nombre, char *&cli_Categoria){
     
     
 }
+
+
+void CargaDePedidosYProductos(int *cli_DNI,int *&pro_Codigo,char **&pro_descripcion,double *&pro_Descuento,  double *&pro_Precio ,int **&cli_CodigoProFechaPedido, double **&cli_CantidadPedido){
+    
+    int codProd, duplicado = 0;
+    int buffcod[200], vdni , dd , aa , mm;
+    char *buffnom[200];
+    double buffdesc[200] ,buffprec[200], aux, vdesc, vprecio;
+    
+    char car, descripcion[100];
+    
+    ifstream arch("Pedidos.csv",ios::in);
+    if(!arch){
+        cout << "Error en la apertura del archivo Pedidos.csv" << endl;
+        exit(1);
+    }
+    
+    int i = 0;
+    while(1){
+        arch >> codProd;
+        if(arch.eof()) break;
+        arch >> car;
+        arch.getline(descripcion,100,',');
+        arch >> aux;
+        if(arch.fail()){
+            arch.clear();
+            arch >> car >> vdesc >> car >> aux;
+        }
+        else
+            vdesc = 0;
+        arch >> car >> vprecio >> car >> vdni >>car >> dd >> car >> mm >> car >> aa;
+        
+        
+        duplicado = buscaProducto(codProd,buffcod,i);
+        
+    }
+    
+    cout << "todo bien" << endl;
+    
+}
+        
+int buscaProducto(int codProd,int buffcod[],int tam){
+    for (int i = 0 ; buffcod[i] ; i++){
+        if(codProd == buffcod[i])
+            return 1;
+    }
+    return 0;
+}
