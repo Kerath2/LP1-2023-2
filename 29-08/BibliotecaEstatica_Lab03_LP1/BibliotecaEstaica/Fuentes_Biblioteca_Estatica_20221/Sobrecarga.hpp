@@ -8,10 +8,11 @@
 #ifndef Sobrecarga_hpp
 #define Sobrecarga_hpp
 
-#include "Estructuras.h"
 #include <fstream>
+#include "Estructuras.h"
 using namespace std;
 
 ifstream & operator >>(ifstream &arch ,Estructura_ClienteRegistrado);
+void leerCadena(ifstream &arch , char *&cad);
 
 #endif /* Sobrecarga_hpp */
