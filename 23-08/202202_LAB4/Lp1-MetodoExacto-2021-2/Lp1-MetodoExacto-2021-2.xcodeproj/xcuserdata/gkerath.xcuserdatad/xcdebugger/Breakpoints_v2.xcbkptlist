@@ -3,22 +3,4 @@
    uuid = "33378B01-7758-44C0-88D3-770C94290C94"
    type = "1"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "30FA2BB4-484B-49A9-B3C6-E897DD7D1C59"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MetodoExacto.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "CargaDePedidosYProductos(cli_DNI, pro_Codigo, pro_descripcion, pro_Descuento, pro_Precio, cli_CodigoProFechaPedido, cli_CantidadPedido)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>
