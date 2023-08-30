@@ -29,10 +29,4 @@ ifstream & operator >>(ifstream &arch, Estructura_ClienteRegistrado &cliente) {
     return arch;
 }
 
-void leerCadena(ifstream &arch , char *&cad){
-    char buff[200];
-    arch.getline(buff,200,',');
-    cad = new char[strlen(buff)+ 1];
-    strcpy(cad,buff);
-}
 
