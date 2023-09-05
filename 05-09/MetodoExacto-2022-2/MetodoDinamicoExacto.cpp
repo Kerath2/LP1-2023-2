@@ -1,4 +1,5 @@
 #include"MetodoDinamicoExacto.h"
+#include <iomanip>
   
 
 
@@ -75,4 +76,21 @@ void separaEspecialidad(char * nombre,  char * &especialidad){
   }
   especialidad[i] = 0;
   nombre[posEspacio] = 0;
+}
+
+
+void pruebaDeLecturaDeMedicos(const char *nomberArch,int *med_Codigo, char **med_Nombre, char **med_Especialidad,  double *med_Tarifa){
+  ofstream arch(nomberArch,ios::out);
+  if(!arch){
+    cout << "Error en la apertura del archivo para prueba de lectura medicos" << endl;
+    exit(1);
+  }
+
+
+  arch << fixed << setprecision(2) << left;
+  for(int i = 0 ; med_Codigo[i] ; i++){
+    arch << setw(12)  << med_Codigo[i] << setw(40) << med_Nombre[i] << setw(20) << med_Especialidad[i] << setw(12) << med_Tarifa[i] << endl;
+  }
+
+
 }

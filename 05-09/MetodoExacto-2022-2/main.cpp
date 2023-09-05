@@ -2,8 +2,8 @@
 
 
 //Borrar luegio
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 //
 
 int main(){
@@ -14,12 +14,10 @@ int main(){
 
 
   lecturaDeMedicos("Medicos.csv",med_Codigo,med_Nombre, med_Especialidad, med_Tarifa);
+  pruebaDeLecturaDeMedicos("ReporteDeMedicos.txt",med_Codigo,med_Nombre, med_Especialidad, med_Tarifa);
 
 
 
-  for(int i = 0 ; med_Codigo[i] ; i++){
-    cout << med_Codigo[i] << " " << med_Nombre[i] << " " << med_Especialidad[i] << " " << med_Tarifa[i] << endl;
-  }
 
   return 0;
 }
