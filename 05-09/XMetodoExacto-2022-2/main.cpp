@@ -16,7 +16,9 @@ int main(){
   lecturaDeMedicos("Medicos.csv",med_Codigo,med_Nombre, med_Especialidad, med_Tarifa);
   pruebaDeLecturaDeMedicos("ReporteDeMedicos.txt",med_Codigo,med_Nombre, med_Especialidad, med_Tarifa);
   lecturaDeCitas("citas.csv",pac_DNI,pac_Nombre,pac_Citas);
-  pruebaDeLecturaDeCitas("ReporteDeCitas.csv",pac_DNI,pac_Nombre,pac_Citas);
+  pruebaDeLecturaDeCitas("ReporteDeCitas.txt",pac_DNI,pac_Nombre,pac_Citas);
+  reporteDeIngresosMedicosyGastosDeLosPacientes("ReporteDeIngresosMedicos.txt",med_Codigo,med_Nombre,med_Especialidad,med_Tarifa,pac_DNI,pac_Nombre,pac_Citas);
+
 
 
 

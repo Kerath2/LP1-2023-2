@@ -17,5 +17,12 @@ int buscaIndice(int dni,int *buffpacDni,int cont);
 void agregarDatos(int codMed,int fecha,int  * arregloPac, int cantDatos);
 void mocharHorizontal(int *&arreglo , int cantDatos);
 void imprimeCitas(ofstream &arch,int * citas );
+
+
+void reporteDeIngresosMedicosyGastosDeLosPacientes(const char *nombreArch,int *&med_Codigo,char **med_Nombre, char ** med_Especialidad,
+                                                   double *med_Tarifa,int *pac_DNI,char **pac_Nombre,int **pac_Citas);
+void imprimeLinea(ofstream &arch,char car);
+int encuentraRepeticiones(int med_Codigo,int * pac_DNI,int ** pac_Citas);
+
 #endif // !METODO_EXACOT
 

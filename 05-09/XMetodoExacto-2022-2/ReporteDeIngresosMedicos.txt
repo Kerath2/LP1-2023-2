@@ -1,0 +1,46 @@
+EMPRESA PRESTADORA DE SALUD
+====================================================================================================
+INGRESOS DE LOS MEDICOS POR LAS CITAS:
+====================================================================================================
+N0. Codigo     Nombre            Especialidad               Tarifa           Total de Ingresos
+----------------------------------------------------------------------------------------------------
+1 )506117      EDGAR MUNOZ VERGEL                                Urologia            337.03          33365.97
+2 )150928      LUZ SOFIA JAUREGUI BRAVO                          Dermatologia        756.45          71862.75
+3 )601846      SURAMI HELI PRECIADO PINTO                        Traumatologia       738.90          12561.30
+4 )907988      GIOVANA MEJIA ZEGARRA                             Traumatologia       758.51          47027.62
+5 )807862      ROSARIO MARIBEL YEP ZAVALETA                      Ginecologia         997.38          32913.54
+6 )702339      CINTHIA MILENA ZEGARRA CABELLO                    Ginecologia         902.38         105578.46
+7 )892133      DELIA ZARATE URBINA                               Gastroenterologia   389.91          28463.43
+8 )909077      FIORELLA ERIKA FLORENCIO POLO                     Dermatologia        470.72          48013.44
+9 )609349      OFELIA CARMEN MERCADO CARO                        Neumologia          526.45          43168.90
+10)147871      WALTER JOLAY CHUMPITAZ                            Traumatologia       298.45          18802.35
+11)600493      HUMBERTO ALBERTO VARGAS GUEVARA                   Gastroenterologia   780.49          53073.32
+12)702694      DELICIA ARCA AQUINO                               Dermatologia        523.53          30888.27
+13)535567      VALENTINA PAULA URBINA ANTEZANO                   Pediatria           410.37          25442.94
+14)706122      ZKENIA IRMA CHUNG ZUNIGA                          Traumatologia       842.24          81697.28
+15)644057      LOURDES CARMELA YALLICO PAREDES                   Oftalmologia        232.61          10932.67
+16)909295      DELICIA ROSA ARCA LEIVA                           Oftalmologia        405.69          43814.52
+17)703676      DELIA ESTEFANIA CABRERA MORENO                    Urologia            781.15           7811.50
+18)187089      WILMER SAENZ ARANDA                               Ginecologia         176.60          10242.80
+19)801383      GUSTAVO ALONSO DEL CASTILLO MEJIA                 Geriatria           319.80          43812.60
+20)354519      JAVIER EDGARD LANDA CABRERA                       Pediatria           897.50          33207.50
+21)709926      OFELIA BEATRIZ MONTERO BOLANOS                    Gastroenterologia   525.59          58340.49
+22)497687      MARINA NATALIA GARCIA INGA                        Cardiologia         197.06           9458.88
+23)336876      BLANCA LUZ ACUNA AYLLON                           Oftalmologia        654.46          18979.34
+24)707896      VICTORIA MILAGROS SHIRAKAWA SAONA                 Pediatria           19.29            1485.33
+25)182620      EMILIO EMIGDIO GONZALES AGUIRRE                   Urologia            981.29          18644.51
+26)146552      GLENDA CABRERA MORI                               Oncologia           940.91          20700.02
+27)802270      TERESA TERESA MARTEL MERCADO                      Pediatria           170.85           3075.30
+28)341150      MIGUEL ALEX LANDEO ESTRADA                        Cardiologia         893.34          86653.98
+29)800404      DAVID CARLOS PEREZ ANTEZANO                       Endocrinologia      4.56              629.28
+30)254488      CARMEN ZAMORA CABRERA                             Endocrinologia      496.87          70058.67
+31)404143      YLIANA FLOR ORTIZ GUEVARA                         Ginecologia         55.48             554.80
+32)905627      HUMBERTO ALFONSO AMEZQUITA CONTRERAS              Dermatologia        869.33          59983.77
+33)915098      RAUL COLLADO VILLA                                Cardiologia         146.35          13317.85
+34)305578      JAIME JULIAN SHIRAKAWA FLORIAN                    Neumologia          169.44           7455.36
+35)201895      FRANCISCO ZIMIC SALAS                             Endocrinologia      854.93         105156.39
+36)300822      ALFONSO WALDEMAR CABELLO LAM                      Cardiologia         184.46          14387.88
+37)507183      ESTEFANIA ZEGARRA CASANOVA                        Pediatria           264.21           3698.94
+38)520631      MILENA CINTHIA ZARATE ACUNA                       Traumatologia       792.07          87127.70
+39)800631      VICTORIA FIORELLA CUBA POMAJAMBO                  Gastroenterologia   256.05          18947.70
+40)197775      ROSARIO TABORI ARIAS                              Oftalmologia        977.98          42053.14

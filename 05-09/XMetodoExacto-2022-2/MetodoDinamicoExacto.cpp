@@ -2,6 +2,7 @@
 #include <iomanip>
   
 
+#define TAM_LINEA 100
 
 
 
@@ -65,7 +66,7 @@ void separaEspecialidad(char * nombre,  char * &especialidad){
   int  posEspacio;
   for (int i = tam ; nombre[i] != ' ' ; i--)posEspacio = i;
   //En i esta el espacio
-  //Asignemos neuva memoria 
+  //Asignemos neuva memoria
 
   especialidad = new char[tam -posEspacio +1];
 //
@@ -100,7 +101,7 @@ void lecturaDeCitas(const char * nombreArch, int *& pac_DNI, char ** &pac_Nombre
   int buffpacDni[300], *buffpacCitas[300];
   char *buffpacNombre[300], c;
 
-fstream arch(nombreArch,ios::in);
+ifstream arch(nombreArch,ios::in);
   if(!arch){
     cout << "Error en la apertura del archivo para leer las citas" << endl;
     exit(1);
@@ -113,7 +114,7 @@ fstream arch(nombreArch,ios::in);
     if(arch.eof()) break;
     arch >> c;
     leerCadena(arch,nombre);
-    arch >> codMed >> c >> dd >> c >> mm >> c >> aa; 
+    arch >> codMed >> c >> dd >> c >> mm >> c >> aa;
     int fecha = aa * 10000 + mm * 100 + dd;
     int indice  = buscaIndice(dni,buffpacDni,cont);
     if(indice == -1){
@@ -121,6 +122,7 @@ fstream arch(nombreArch,ios::in);
       buffpacNombre[cont] = nombre;
       //Creamos su fila horizontal inicializada en null
       buffpacCitas[cont] = new int[100];
+      indice = cont;
       cont++;
     }
     // Agregamos el codmed y fecha para todos los casos
@@ -199,4 +201,60 @@ void imprimeCitas(ofstream &arch,int * citas ){
     arch << citas[i] << " ";
   }
   arch << endl;
+}
+
+
+
+
+void reporteDeIngresosMedicosyGastosDeLosPacientes(const char *nombreArch,int *&med_Codigo,char **med_Nombre, char ** med_Especialidad,
+                                                   double *med_Tarifa,int *pac_DNI,char **pac_Nombre,int **pac_Citas){
+
+  ofstream arch(nombreArch,ios::out);
+  if(!arch){
+    cout << "Error en la apertura del archivo para el reporte final" << endl;
+    exit(1);
+  }
+
+  arch << "EMPRESA PRESTADORA DE SALUD" << endl;
+  imprimeLinea(arch,'=');
+  arch << "INGRESOS DE LOS MEDICOS POR LAS CITAS:" << endl;
+  imprimeLinea(arch,'=');
+  arch << "N0. Codigo     Nombre            Especialidad               Tarifa           Total de Ingresos" << endl;
+  imprimeLinea(arch, '-');
+  arch << left << fixed << setprecision(2);
+  for (int i = 0 ;  med_Codigo[i] ; i++){
+
+
+    int repeticiones = encuentraRepeticiones(med_Codigo[i], pac_DNI, pac_Citas);
+      double total = med_Tarifa[i] * repeticiones;
+
+
+    arch <<setw(2) << i+1 << ")" << setw(12)  << med_Codigo[i] <<  setw(50) << med_Nombre[i] << setw(20) << med_Especialidad[i] << setw(12) << med_Tarifa[i]
+      <<  right << setw(12) << total  <<   left << endl;
+  }
+
+
+
+}
+  
+
+void imprimeLinea(ofstream &arch,char car){
+  for (int i = 0 ; i < TAM_LINEA ; i++){
+    arch << car;
+  }
+  arch << endl;
+}
+
+
+
+
+int encuentraRepeticiones(int med_Codigo,int * pac_DNI,int ** pac_Citas){
+  int repeticiones = 0;
+
+  for (int i  = 0 ; pac_DNI[i] ;  i++){
+    int *filaCitas = pac_Citas[i];
+    for (int j = 0 ; filaCitas[j] ; j++)
+      if(filaCitas[j] == med_Codigo) repeticiones++;
+  }
+  return repeticiones;
 }
