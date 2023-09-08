@@ -27,15 +27,12 @@ void llenarClientes(int *&cli_dni,int ***&cli_pedidos,char **&cli_nombre){
         int fecha = aa * 10000 + mm *100 + dd;
         int posicion = buscaPosicion(dni,buff_dni,cont);
         if(posicion == -1){
-            //Posicion Nueva 
-            posicion = insertarOrdenado(dni,nombre,cont,buff_dni,buff_Nombre);
-            posicion = cont;
-            //Creamos nueva memoria
-            crearMemoria(buff_pedidos[posicion]);
+            //Posicion Nueva
+            posicion = insertarOrdenado(dni, nombre, cont , buff_dni, buff_Nombre, buff_pedidos, numRegistros);
             buff_pedidos[posicion] = new int *[100];
             cont++;
         }
-        llenarRegistro(numRegistros[posicion],buff_pedidos[posicion],codPed,fecha);
+        llenarRegistroOrdenado(numRegistros[posicion],buff_pedidos[posicion],codPed,fecha);
     }
     mocharRegistros(buff_pedidos,numRegistros,cont);
     //Crear memoria para nuestros buffers
@@ -76,33 +73,40 @@ int buscaPosicion(int dni,int * buff_dni,int cont){
 }
 
 
-int insertarOrdenado(int dni,char * nombre,int cont,int  *buff_dni,char **buff_Nombre){
-    if (cont == 0){
+int insertarOrdenado(int dni, char *nombre, int &cont, int *buff_dni, char **buff_Nombre, int ***buff_pedidos, int *numRegistros) {
+    if (cont == 0) {
         buff_dni[0] = dni;
         buff_Nombre[0] = nombre;
+        return 0;
     }
 
-    int posaInsertar = cont; // Inicializar posaInsertar al final del arreglo por defecto.
+    int posaInsertar = cont;
 
-     for (int i = 0; i < cont; i++) {
-         if (dni < buff_dni[i]) { // Cambiamos la condición para encontrar la posición correcta.
-             posaInsertar = i;
-             break; // Salir del bucle una vez que se encuentra la posición.
-         }
-     }
-
-    //Desplazamos hacia abajo los demas registros
-    for (int i = cont ; i > posaInsertar ; i--){
-        buff_dni[i] = buff_dni[i-1];
-        buff_Nombre[i] = buff_Nombre[i-1];
+    for (int i = 0; i < cont; i++) {
+        if (dni < buff_dni[i]) {
+            posaInsertar = i;
+            break;
+        }
     }
-    //Insertamos 
+
+    for (int i = cont; i > posaInsertar; i--) {
+        buff_dni[i] = buff_dni[i - 1];
+        buff_Nombre[i] = buff_Nombre[i - 1];
+        buff_pedidos[i] = buff_pedidos[i - 1];
+        numRegistros[i] = numRegistros[i - 1];
+    }
+
     buff_dni[posaInsertar] = dni;
     buff_Nombre[posaInsertar] = nombre;
+    //buff_pedidos[posaInsertar] = new int *[100];
+    numRegistros[posaInsertar] = 0;
+
+    cont++;
 
     return posaInsertar;
-
 }
+
+
 
 void crearMemoria(int **& matriz){
     matriz = new int *[100];
@@ -122,7 +126,33 @@ void llenarRegistro(int & numRegistros,int **matriz, int codPed,int fecha){
 }
 
 
+
+void llenarRegistroOrdenado(int &numRegistros, int **matriz, int codPed, int fecha) {
+    int *registro = new int[3]; // Crear un nuevo registro
+
+    registro[0] = codPed;
+    registro[1] = fecha;
+    registro[2] = 0;
+
+    // Encontrar la posición adecuada para insertar el nuevo registro según la fecha
+    int posicion = 0;
+    while (posicion < numRegistros && matriz[posicion][1] <= fecha) {
+        posicion++;
+    }
+
+    // Desplazar registros existentes para abrir espacio para el nuevo registro
+    for (int i = numRegistros; i > posicion; i--) {
+        matriz[i] = matriz[i - 1];
+    }
+
+    // Insertar el nuevo registro en la posición adecuada
+    matriz[posicion] = registro;
+
+    numRegistros++;
+}
+
 void mocharRegistros(int ***buff_pedidos,int * numRegistros,int cont){
+    // Se asegura que exista nullptr en lugar del último registro
     for (int i = 0; i < cont; i++) {
         int **matriz = buff_pedidos[i];
 
@@ -139,7 +169,6 @@ void mocharRegistros(int ***buff_pedidos,int * numRegistros,int cont){
         buff_pedidos[i] = matriz; // Actualiza el puntero en buff_pedidos
     }
 }
-
 
 
 
@@ -166,4 +195,5 @@ void imprimeRegistros(ofstream &arch, int **matriz){
     }
     arch << endl;
 }
+
 
